@@ -216,9 +216,25 @@ var deleteTask = function(taskId) {
   tasks = updatedTaskArr;
   localStorage.setItem("tasks", tasks);
 };
+
 var saveTasks = function() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
-}
+};
+
+var loadTasks = function() {
+//get task items from local storag 
+    var savedTasks = localStorage.getItem("tasks");
+    //convert tasks from string back to array
+    if (!savedTasks) {
+        return false;
+    }
+
+savedTasks = JSON.parse(savedTasks);
+console.log(tasks)
+
+};
+
+loadTasks();
 // Create a new task
 formEl.addEventListener("submit", taskFormHandler);
 
